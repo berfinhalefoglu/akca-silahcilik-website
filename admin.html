@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Yönetim Paneli | Akça Silahçılık</title>
+    
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <aside>
+        <h2>YÖNETİM PANELİ</h2>
+        <nav>
+            <button onclick="show('users')" class="active-btn" id="btn-users">👥 Üyeler</button>
+            <button onclick="show('create')" id="btn-create">➕ Yeni Üye Ekle</button>
+            <button onclick="show('logs')" id="btn-logs">📋 Giriş Logları</button>
+        </nav>
+        <button onclick="location.href='index.html'" class="logout-btn">Çıkış Yap</button>
+    </aside>
+
+    <main>
+        
+        <div id="users-sec">
+            <h2>Üye Listesi</h2>
+            <table id="user-table">
+                </table>
+        </div>
+
+        <div id="create-sec" style="display:none;">
+            <h2>Yeni Üye Oluştur</h2>
+            <div class="input-group">
+                <label>Kullanıcı Adı</label>
+                <input type="text" id="new-user" placeholder="Örn: mehmet_yilmaz">
+                
+                <label>Şifre</label>
+                <input type="text" id="new-pass" placeholder="Örn: 123456">
+                
+                <button class="btn btn-save" onclick="createUser()">Kullanıcıyı Kaydet</button>
+            </div>
+        </div>
+
+        <div id="logs-sec" style="display:none;">
+            <h2>Giriş Logları</h2>
+            <ul id="log-list">
+                </ul>
+        </div>
+
+    </main>
+
+    <script>
+        async function loadData() {
+            // 1. Kullanıcıları Çek
+            const uRes = await fetch('/api/admin/users');
+            const users = await uRes.json();
+            
+            document.getElementById('user-table').innerHTML = `
+                <thead>
+                    <tr>
+                        <th>Kullanıcı Adı</th>
+                        <th>Durum</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                ${users.map(u => u.role !== 'admin' ? `
+                <tr>
+                    <td>${u.username}</td>
+                    <td><span class="status-badge ${u.isSuspended ? 'status-suspended' : 'status-active'}">
+                        ${u.isSuspended ? 'ASKIDA' : 'AKTİF'}
+                    </span></td>
+                    <td>
+                        <button class="btn ${u.isSuspended ? 'btn-green' : 'btn-red'}" onclick="toggle(${u.id})">
+                            ${u.isSuspended ? 'Aktif Et' : 'Askıya Al'}
+                        </button>
+                    </td>
+                </tr>` : '').join('')}
+                </tbody>`;
+
+            // 2. Logları Çek
+            const lRes = await fetch('/api/admin/logs');
+            const logs = await lRes.json();
+            
+            document.getElementById('log-list').innerHTML = logs.map(l => 
+                `<li>
+                    <strong>${l.username}</strong> sisteme giriş yaptı. <br>
+                    <small style="color:#888;">${l.date} | IP: ${l.ip}</small>
+                </li>`
+            ).join('');
+        }
+
+        // Yeni Kullanıcı Oluşturma
+        async function createUser() {
+            const username = document.getElementById('new-user').value;
+            const password = document.getElementById('new-pass').value;
+            
+            if(!username || !password) { alert("Lütfen tüm alanları doldurun!"); return; }
+
+            const res = await fetch('/api/admin/create-user', {
+                method: 'POST', headers: {'Content-Type':'application/json'},
+                body: JSON.stringify({newUsername: username, newPassword: password})
+            });
+            const d = await res.json();
+            alert(d.message);
+            if(d.success) {
+                document.getElementById('new-user').value = "";
+                document.getElementById('new-pass').value = "";
+                show('users'); // Listeye geri dön
+                loadData();
+            }
+        }
+
+        // Durum Değiştirme
+        async function toggle(id) {
+            if(!confirm("Kullanıcının durumunu değiştirmek istiyor musunuz?")) return;
+            await fetch('/api/admin/toggle-status', {
+                method: 'POST', headers: {'Content-Type':'application/json'},
+                body: JSON.stringify({userId: id})
+            });
+            loadData();
+        }
+
+        // Menü Geçişleri
+        function show(id) {
+            // Tüm bölümleri gizle
+            ['users-sec','create-sec','logs-sec'].forEach(d => document.getElementById(d).style.display = 'none');
+            // Seçileni göster
+            document.getElementById(id+'-sec').style.display = 'block';
+
+            // Buton aktiflik sınıflarını ayarla
+            document.querySelectorAll('aside nav button').forEach(btn => btn.classList.remove('active-btn'));
+            document.getElementById('btn-' + id).classList.add('active-btn');
+        }
+
+        // Sayfa açılınca verileri yükle
+        loadData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+
+/* KATEGORİ KARTLARI */
+.category-section {
+  margin-top: 1.5rem;
+}
+.category-section-header {
+  margin-bottom: 1.1rem;
+}
+.category-section-header h2 {
+  font-size: 1.2rem;
+  color: var(--green-main);
+}
+.category-section-header p {
+  font-size: .9rem;
+  color: var(--text-muted);
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  padding: 1.2rem 1.4rem;
+  background:
+    radial-gradient(circle at 0 0, rgba(255,255,255,.05), transparent 55%),
+    linear-gradient(135deg, #1b2418, #303c2c);
+  box-shadow: var(--shadow-soft);
+  color: #f6f9f4;
+  border: 2px solid rgba(168, 201, 122, 0.85);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 40px rgba(0,0,0,0.35);
+}
+.category-card::after {
+  content: "";
+  position: absolute;
+  inset: 45% -10% -15%;
+  background: radial-gradient(circle at 20% 120%, rgba(127,162,107,0.6), transparent 60%);
+  opacity: .9;
+}
+.category-card-inner {
+  position: relative;
+  z-index: 1;
+}
+.category-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: .35rem;
+}
+.category-title span.highlight {
+  color: var(--green-bright);
+}
+.category-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  font-size: .78rem;
+  color: #dbe7d3;
+}
+.category-tag {
+  border-radius: 999px;
+  padding: .18rem .65rem;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.category-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: .6rem;
+  padding: .45rem 1.15rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  border: none;
+  cursor: pointer;
+  color: #132112;
+  background: linear-gradient(135deg, #a8c97a, #8ab566);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.45);
+}
+.category-btn span.icon { font-size: .9rem; }
+
+.category-image-placeholder {
+  margin-top: .7rem;
+  height: 120px;
+  border-radius: 14px;
+  background: radial-gradient(circle at 10% 10%, rgba(255,255,255,.08), transparent 55%);
+  border: 1px dashed rgba(236,247,231,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  color: rgba(237,247,233,0.85);
+}
+
+/* ALT DAİRESEL KATEGORİLER */
+.category-circle-row {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+.category-circle-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+  font-size: .85rem;
+  color: var(--green-deep);
+}
+.category-circle-link {
+  display: inline-block;
+  border-radius: 50%;
+}
+.category-circle {
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: var(--green-main);
+  border: 3px solid var(--green-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f4f9f0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.category-circle-link:hover .category-circle {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+/* --- KATEGORİ KART RESİMLERİ --- */
+
+.category-card-img {
+  width: 100%;          /* Kutunun genişliğini doldur */
+  height: 150px;        /* Yüksekliği sabitle (hepsi eşit boyda olsun) */
+  object-fit: cover;    /* Resmi sündürmeden, kırparak kutuya sığdır */
+  border-radius: 12px;  /* Köşeleri yuvarlat */
+  margin-top: 1rem;     /* Üstteki butondan biraz uzaklaşsın */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* İnce bir çerçeve ekle */
+  transition: transform 0.3s ease; /* Hover efekti için hazırlık */
+}
+
+/* Kartın üzerine gelince resim hafif büyüsün (Opsiyonel, şık durur) */
+.category-card:hover .category-card-img {
+  transform: scale(1.03);
+}

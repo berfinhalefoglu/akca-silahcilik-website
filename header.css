@@ -1,0 +1,272 @@
+/* =========================================
+   1. HEADER ANA DÜZENİ (LAYOUT)
+   (Sildiğin için bozulan kısımlar burasıydı)
+   ========================================= */
+
+header {
+  background-color:  #f5ecc2; /* ✅ İSTEDİĞİN GRİ RENK */
+  height: auto; 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Gölgeyi biraz belirginleştirdim */
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.5rem;
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 1200px; /* İçeriği ortala */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Logo sol, Nav orta, Sağ taraf sağa */
+}
+
+/* --- LOGO ALANI --- */
+.logo-area {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  /* Eski kodda div idi, şimdi 'a' etiketi yaptık, bu yüzden cursor pointer otomatik gelir */
+}
+/* Görselin boyutunu sınırla */
+.site-logo {
+  height: 60px; /* Header yüksekliğin 80px olduğu için 60px idealdir */
+  width: auto;  /* Genişlik orantılı olarak ayarlansın */
+  object-fit: contain; /* Görseli bozmadan sığdır */
+  transition: transform 0.2s ease;
+}
+
+.site-logo:hover {
+  transform: scale(1.05); /* Üzerine gelince hafif büyüsün */
+}
+
+/* --- NAVİGASYON (MENÜ) --- */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Linkler arası boşluk */
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-link:hover {
+  color: var(--green-main);
+}
+/* --- NAVİGASYON (MENÜ) DÜZELTMESİ --- */
+
+/* Buton olan linkin (Kategoriler) diğerleriyle aynı fontu almasını zorla */
+button.nav-link {
+  font-family: inherit; /* Vücut fontunu (Roboto/Oswald) miras al */
+  font-size: 0.9rem;    /* Diğer linklerle aynı punto */
+  font-weight: 500;     /* Kalınlık aynı olsun */
+  padding: 0;           /* Butonun iç boşluğunu sıfırla */
+  background: none;     /* Arkaplanı sil */
+  border: none;         /* Kenarlığı sil */
+  cursor: pointer;
+  color: var(--text-main);
+  display: inline-flex; /* Hizalamayı düzeltir */
+  align-items: center;
+}
+
+/* Üzerine gelince renk değişimi */
+button.nav-link:hover {
+  color: var(--green-main);
+}
+/* --- HEADER SAĞ TARAFI (Arama + Butonlar) --- */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Arama çubuğu ve butonlar arası boşluk */
+}
+
+
+/* =========================================
+   2. ARAMA ÇUBUĞU (SEARCH)
+   ========================================= */
+
+.header-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  background: var(--bg-main); /* Panel renginden biraz koyu olsun */
+  padding: .35rem .35rem .35rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft); /* Çerçeveyi incelttim */
+  font-size: .85rem;
+  width: 280px; /* Genişlik sabitlendi */
+  transition: all 0.3s ease;
+}
+
+.header-search:focus-within {
+  background:#9b9c9b;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-color: var(--green-soft);
+}
+
+.header-search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: .85rem;
+  flex: 1;
+  color: var(--text-main);
+  min-width: 0; /* Flex içinde taşmayı önler */
+}
+
+.header-search input::placeholder {
+  color: var(--text-muted);
+}
+
+.header-search-btn {
+  border-radius: 999px;
+  border: none;
+  padding: .4rem 1rem;
+  font-size: .8rem;
+  font-weight: 600;
+  background: var(--green-main);
+  color: #fff;
+  cursor: pointer;
+  transition: all .2s ease;
+  flex-shrink: 0; /* Butonun küçülmesini engelle */
+}
+
+.header-search-btn:hover {
+  background: var(--green-deep);
+  transform: translateY(-1px);
+}
+
+/* Arama Sonuç Dropdown */
+.header-search-results {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
+  width: 100%;
+  background: var(--bg-panel);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: .5rem 0;
+  display: none;
+  z-index: 101;
+  border: 1px solid var(--border-soft);
+}
+
+.header-search-results.open {
+  display: block;
+}
+
+.search-result-item,
+.search-empty {
+  width: 100%;
+  text-align: left;
+  padding: .6rem 1rem;
+  border: none;
+  background: transparent;
+  font-size: .85rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result-item:hover {
+  background: var(--bg-main);
+}
+
+.search-result-item .title {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.search-result-item .meta {
+  font-size: .75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.search-empty {
+  cursor: default;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+
+/* =========================================
+   3. BUTONLAR (CTA) - DÜZELTİLEN KISIM
+   ========================================= */
+
+/* 1. Temel Buton (Mağaza Bilgileri - Yeşil) */
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; /* Yükseklik sabitleme */
+  padding: 0 1.25rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .25s ease;
+  border: 2px solid transparent; /* Çerçeve payı */
+  white-space: nowrap; /* Yazı alt satıra inmesin */
+  
+  /* Renkler */
+  background: #97acc8;
+  color: #437742;
+  box-shadow: 0 4px 10px rgba(151,172,200);
+}
+
+.header-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(245,236,194);
+}
+
+/* 2. İkincil Buton (Üyelik - Beyaz) */
+.header-cta.header-cta-secondary {
+  background: var(--bg-panel);
+  color: var(--green-deep);
+  box-shadow: none;
+}
+
+.header-cta.header-cta-secondary:hover {
+  border-color: var(--green-main);
+  background: #fdbf68;
+  color: var(--green-main);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(245,236,194);
+}
+/* --- TOP BAR (Üst Şerit) --- */
+.top-bar {
+  background-color: var(--green-deep); /* Koyu yeşil */
+  color: rgba(255,255,255,0.9);
+  font-size: 0.75rem;
+  padding: 0.4rem 0;
+  width: 100%;
+}
+
+.top-bar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between; /* Yazıları iki uca yasla */
+}
+
+/* Header yüksekliğini top-bar eklediğimiz için otomatiğe alalım */
+header {
+  height: auto; 
+  flex-direction: column; /* Alt alta dizilsinler */
+  padding-bottom: 0.5rem;
+}

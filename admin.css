@@ -1,0 +1,209 @@
+/* =========================================
+   YÖNETİM PANELİ STİL DOSYASI
+   ========================================= */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #f4f6f8; /* Çok açık gri zemin */
+    display: flex;
+    height: 100vh; /* Tüm ekranı kapla */
+    overflow: hidden;
+}
+
+/* --- SOL MENÜ (SIDEBAR) --- */
+aside {
+    width: 260px;
+    background: linear-gradient(180deg, #2E4634 0%, #1e2e22 100%); /* Koyu Yeşil Degrade */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+aside h2 {
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin: 0;
+    font-size: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    letter-spacing: 1px;
+}
+
+aside nav {
+    flex: 1;
+    padding-top: 1rem;
+}
+
+aside button {
+    background: none;
+    border: none;
+    color: #ccc;
+    width: 100%;
+    text-align: left;
+    padding: 15px 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+aside button:hover {
+    background-color: rgba(255,255,255,0.05);
+    color: #fff;
+    padding-left: 30px; /* Sağa kayma efekti */
+}
+
+aside button.active-btn {
+    background-color: #4E894C; /* Canlı Yeşil */
+    color: #fff;
+    border-left: 5px solid #F1C40F; /* Altın Sarısı Çizgi */
+}
+
+/* Çıkış Butonu */
+.logout-btn {
+    background-color: #c0392b !important;
+    color: #fff !important;
+    text-align: center !important;
+    justify-content: center;
+    padding: 1rem !important;
+    font-weight: bold;
+    margin-top: auto; /* En alta it */
+}
+
+.logout-btn:hover {
+    background-color: #e74c3c !important;
+}
+
+/* --- SAĞ İÇERİK (MAIN) --- */
+main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto; /* İçerik taşarsa kaydır */
+}
+
+main h2 {
+    font-family: 'Oswald', sans-serif;
+    color: #2E4634;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #4E894C;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+}
+
+/* --- TABLOLAR --- */
+table {
+    width: 100%;
+    background: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th {
+    background-color: #2E4634;
+    color: #fff;
+    padding: 15px;
+    text-align: left;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Durum Etiketleri */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.status-active { background-color: #e8f5e9; color: #2e7d32; }
+.status-suspended { background-color: #ffebee; color: #c62828; }
+
+/* --- FORMLAR --- */
+.input-group {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    max-width: 450px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; /* Padding taşmasını önler */
+    font-size: 1rem;
+}
+
+.input-group input:focus {
+    border-color: #4E894C;
+    outline: none;
+}
+
+/* --- BUTONLAR --- */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-green { background-color: #27ae60; color: white; }
+.btn-green:hover { background-color: #219150; }
+
+.btn-red { background-color: #e74c3c; color: white; }
+.btn-red:hover { background-color: #c0392b; }
+
+.btn-save {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    margin-top: 10px;
+    background-color: #2E4634;
+    color: white;
+}
+.btn-save:hover { background-color: #4E894C; }
+
+/* --- LOG LİSTESİ --- */
+#log-list {
+    list-style: none;
+    padding: 0;
+}
+
+#log-list li {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 5px solid #3498db; /* Mavi Çizgi */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+#log-list li strong {
+    color: #2c3e50;
+}

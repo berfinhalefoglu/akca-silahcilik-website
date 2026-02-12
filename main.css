@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px; /* Standart Tarayıcı Boyutu */
+}
+
+:root {
+  /* ANA RENKLER (Senin yeşil tonların) */
+  --green-main: #354f3b;
+  --green-deep: #1e2b21;
+  --green-soft: #5b7052;
+  --green-bright: #d4a373; /* Bronz vurgu */
+  
+  /* --- DEĞİŞEN KISIM BURASI --- */
+  /* Arka Plan: Soğuk beyaz yerine sıcak bir "Kum Taşı" rengi */
+  --bg-main: #e6e4e0; 
+  
+  /* Kartlar/Paneller: Tam beyaz yerine çok hafif kırık beyaz (Krem) */
+  --bg-panel: #fbfbf9; 
+  /* --------------------------- */
+
+  --text-main: #2b2b2b;
+  --text-muted: #5e5e5e;
+  
+  --border-soft: rgba(0,0,0,0.06);
+  --radius-lg: 12px;
+  --shadow-soft: 0 10px 30px rgba(53, 79, 59, 0.1);
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+  --transition-fast: 0.2s ease;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  /* Başlıklar için sert, diğer yazılar için okunaklı font */
+  font-size: 1rem; /* Yani 16px */
+  font-family: 'Roboto', sans-serif; 
+  background:#4E894C; /* Arka planı çok hafif grileştirip beyaz kartları öne çıkaralım */
+  color: var(--text-main);
+}
+
+/* Başlıkları özelleştir */
+h1, h2, h3, .nav-link, .header-cta {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.5px; /* Harfleri biraz açalım, havalı dursun */
+}
+a { color: inherit; text-decoration: none; }
+
+/* ANA SAYFA GENEL */
+.page {
+  max-width: 1200px;
+  margin: 1.5rem auto 3rem;
+  padding: 0 1.5rem;
+}
+
+.page-with-sidebar {
+  max-width: 1200px;
+  margin: 0 auto 3rem;        /* üstteki 1.5rem'i kaldırdım */
+  padding: 1.5rem 1.5rem 0;   /* iç boşluğu hero için kullandık */
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+
+.hero-intro {
+  background: var(--bg-panel);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 2rem;
+}
+.hero-intro h1 {
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+  color: var(--green-main);
+}
+.hero-intro p {
+  font-size: .9rem;
+  color: var(--text-muted);
+  max-width: 40rem;
+}
+/* =========================================
+   HEADER MENÜ LİNKLERİ VE BUTONLARI (KESİN ÇÖZÜM)
+   ========================================= */
+
+/* 1. Header içindeki TÜM linkler (a) ve Kategori butonu */
+#header-container a, 
+#kategori-btn {
+    font-family: 'Oswald', sans-serif; /* Kalın font */
+    font-weight: 700;                  /* Kalınlık */
+    font-size: 1rem;                   /* 16px boyut */
+    color: var(--green-main);          /* Yeşil renk */
+    background: transparent;           /* Arka plan yok */
+    border: none;                      /* Çerçeve yok */
+    cursor: pointer;                   /* El işareti */
+    padding: 0.5rem 0.8rem;            /* Tıklama alanı */
+    letter-spacing: 0.5px;             /* Harf aralığı */
+    transition: color 0.2s ease;       /* Renk geçiş efekti */
+    text-decoration: none;             /* Alt çizgi yok */
+    display: inline-block;             /* Hizalama düzgün olsun */
+}
+
+/* 2. Üzerine gelince (Hover) Hepsi Sarı Olsun */
+#header-container a:hover, 
+#kategori-btn:hover {
+    color: var(--green-bright) !important; /* Senin sarı rengin */
+}
+/* --- WHATSAPP BUTONU (SAĞ ALT KÖŞE) --- */
+.whatsapp-float {
+  position: fixed; /* Sayfada sabit durmasını sağlayan kod */
+  bottom: 25px;    /* Alt kenardan ne kadar yukarıda olacağı */
+  right: 25px;     /* Sağ kenardan ne kadar içeride olacağı */
+  background-color: #25D366; /* WhatsApp yeşili */
+  color: #fff;
+  width: 55px;     /* Yuvarlak butonun genişliği */
+  height: 55px;    /* Yuvarlak butonun yüksekliği */
+  border-radius: 50%; /* Tam yuvarlak yap */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Hafif gölge */
+  z-index: 9999;   /* Sitedeki her şeyin üstünde dursun */
+  transition: all 0.3s ease; /* Yumuşak hareket */
+}
+
+/* İkonun boyutu */
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* Üzerine gelince (Hover) efekti */
+.whatsapp-float:hover {
+  background-color: #128C7E; /* Koyu yeşil olur */
+  transform: translateY(-3px) scale(1.05); /* Hafifçe yukarı kalkar ve büyür */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}

@@ -1,0 +1,80 @@
+/* =========================================
+   GENEL BİLGİ SAYFALARI STİLİ
+   (Hakkımızda ve S.S.S. için ortaktır)
+   ========================================= */
+
+/* Bölüm Başlıkları */
+.gallery-section {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.gallery-section h2 {
+  font-size: 1.4rem;
+  color: var(--green-main); /* Ana yeşil renk */
+  margin-bottom: 1.2rem;
+  border-left: 5px solid var(--green-bright); /* Sol tarafa şık bir çizgi */
+  padding-left: 1rem;
+}
+
+/* Izgara Yapısı (Grid) */
+.gallery-grid {
+  display: grid;
+  /* Ekran genişse 2 sütun, daralırsa 1 sütun olsun */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+  gap: 1.5rem;
+}
+
+/* Kart Tasarımı (Kutucuklar) */
+.gallery-item {
+  background: var(--bg-panel); /* Beyaz zemin */
+  border: 1px solid var(--border-soft); /* İnce çerçeve */
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Üzerine gelince hafif hareketlensin */
+.gallery-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--green-bright); /* Çerçeve rengi parlasın */
+}
+
+/* Soru Başlığı / Konu Başlığı */
+.gallery-caption {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.3;
+}
+
+/* Cevap Metni / Açıklama */
+.gallery-model {
+  
+  color: var(--text-muted);
+  line-height: 1.6; /* Okumayı kolaylaştırmak için satır arası */
+}
+
+/* Metin içindeki linkler (Telefon, E-posta vb.) */
+.gallery-model a {
+  color: var(--green-main);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.gallery-model a:hover {
+  color: var(--green-bright);
+}
+
+/* Vurgulu kelimeler (Strong etiketleri) */
+.gallery-model strong {
+  color: var(--text-main);
+  font-weight: 700;
+}

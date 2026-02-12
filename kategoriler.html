@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Akça Silahçılık | Ana Sayfa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 🌿 GENEL STİLLER -->
+ 
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/pages/kategoriler.css">
+<!-- 🧭 ORTAK BÖLÜMLER -->
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/footer.css">
+
+<!-- 📄 SAYFA ÖZEL STİL -->
+<!-- (sayfaya göre aşağıdaki değişir) -->
+
+</head>
+<body>
+  <!-- HEADER buraya yüklenecek -->
+  <div id="header-container"></div>
+
+  <!-- HEADER ALTINDA: SIDEBAR + İÇERİK LAYOUT'U -->
+  <div class="page-with-sidebar">
+    <!-- SOL MENÜ BURAYA YÜKLENECEK -->
+    <div id="sidebar-container"></div>
+
+    <!-- ANA İÇERİK -->
+    <main class="page">
+      <!-- HERO -->
+      <section class="hero-intro">
+        <h1>Akça Silahçılık Ürün Vitrini</h1>
+        <p>
+          Bu sayfada, mağazamızda inceleyebileceğiniz ürün gruplarını görebilirsiniz.
+          Tüm içerik <strong>bilgilendirme amaçlıdır</strong>, satış işlemleri yalnızca yetkili mağazamızda
+          yüz yüze gerçekleştirilmektedir.
+        </p>
+      </section>
+      <!-- Alt yuvarlak ikonlar -->
+        <div class="category-circle-row">
+          
+          <div class="category-circle-item">
+            <a href="#havalitabancalar" class="category-circle-link">
+              <div class="category-circle">
+                <img src="img/1.jpg" alt="Havalı Tabanca">
+              </div>
+            </a>
+            <span>Havalı Tabanca</span>
+          </div>
+
+          <div class="category-circle-item">
+            <a href="#havalitufek" class="category-circle-link">
+              <div class="category-circle">
+                <img src="img/2.jpg" alt="Havalı Tüfek">
+              </div>
+            </a>
+            <span>Havalı Tüfek</span>
+          </div>
+
+          <div class="category-circle-item">
+            <a href="#pcptufekler" class="category-circle-link">
+              <div class="category-circle">
+                <img src="img/3.jpg" alt="PCP Tüfekler">
+              </div>
+            </a>
+            <span>PCP Tüfekler</span>
+          </div>
+
+          <div class="category-circle-item">
+            <a href="#airsoft" class="category-circle-link">
+              <div class="category-circle">
+                <img src="img/4.jpg" alt="Airsoft Silahlar">
+              </div>
+            </a>
+            <span>Airsoft Silahlar</span>
+          </div>
+
+          <div class="category-circle-item">
+            <a href="#tupmermi" class="category-circle-link">
+              <div class="category-circle">
+                <img src="img/5.jpg" alt="Tüp ve Mermi">
+              </div>
+            </a>
+            <span>Tüp / Mermi</span>
+          </div>
+
+          <div class="category-circle-item">
+            <a href="#kilif" class="category-circle-link">
+              <div class="category-circle">
+                <img src="img/7.jpg" alt="Kılıf">
+              </div>
+            </a>
+            <span>Kılıf</span>
+          </div>
+
+          <div class="category-circle-item">
+            <a href="#optik" class="category-circle-link">
+              <div class="category-circle">
+                <img src="img/6.jpg" alt="Dürbün">
+              </div>
+            </a>
+            <span>Dürbün / Optik</span>
+          </div>
+        </div>
+
+      <!-- ============= KATEGORİ KARTLARI ============= -->
+      <section class="category-section" id="urun-kategorileri">
+        <div class="category-section-header">
+          <h2>Ürün Kategorilerimiz</h2>
+          <p>Kısa özetler hâlinde başlıca ürün grupları.</p>
+        </div>
+
+        <div class="category-grid">
+          <!-- HAVALI TABANCA (tıklayınca galeriye iner) -->
+          <article class="category-card">
+            <a href="#havalitabancalar" class="category-card-inner">
+              <h3 class="category-title"><span class="highlight">Havalı</span> Tabancalar</h3>
+              <div class="category-tags">
+                <span class="category-tag">CO₂ ve yaylı sistem modeller</span>
+              </div>
+              <button type="button" class="category-btn">
+                Whatsapp üzerinden ulaşabilirsiniz. <span class="icon">➜</span>
+              </button>
+              <img src="img/havalı-tabanca.jpg" alt="Havalı Tabancalar" class="category-card-img">
+            </a>
+          </article>
+
+          <!-- HAVALI TÜFEKLER -->
+          <article class="category-card">
+            <div class="category-card-inner">
+              <h3 class="category-title"><span class="highlight">Havalı</span> Tüfekler</h3>
+              <div class="category-tags">
+                <span class="category-tag">PCP ve kırma mekanizma</span>
+              </div>
+              <button type="button" class="category-btn">
+                Bilgi için mağazamıza başvurun <span class="icon">ℹ</span>
+              </button>
+              <img src="img/havalı-tüfek.jpg" alt="Havalı Tüfekler" class="category-card-img">
+            
+            </div>
+          </article>
+
+          <!-- AIRSOFT -->
+          <article class="category-card">
+            <div class="category-card-inner">
+              <h3 class="category-title"><span class="highlight">Airsoft</span> Silahlar</h3>
+              <div class="category-tags">
+                <span class="category-tag">Hobi amaçlı tabanca & tüfek grupları</span>
+              </div>
+              <button type="button" class="category-btn">
+                Bilgilendirme alın <span class="icon">ℹ</span>
+              </button>
+              <img src="img/airsoft.jpg" alt="Airsoft Tüfekler" class="category-card-img">
+              
+            </div>
+          </article>
+
+          <!-- PCP -->
+          <article class="category-card">
+            <div class="category-card-inner">
+              <h3 class="category-title"><span class="highlight">PCP</span> Tüfekler</h3>
+              <div class="category-tags">
+                <span class="category-tag">Yüksek performanslı modeller</span>
+              </div>
+              <button type="button" class="category-btn">
+                Dha fazla bilgi için bizimle iletişime geçebilirsiniz. <span class="icon">ℹ</span>
+              </button>
+              <img src="img/pcp.jpg" alt="PCP Tüfekler" class="category-card-img">
+              
+            </div>
+          </article>
+
+          <!-- OPTİK -->
+          <article class="category-card">
+            <div class="category-card-inner">
+              <h3 class="category-title"><span class="highlight">Dürbün</span> & Optik</h3>
+              <div class="category-tags">
+                <span class="category-tag">Dürbün, red dot, nişangah</span>
+              </div>
+              <button type="button" class="category-btn">
+                Bilgilendirme alın. <span class="icon">ℹ</span>
+              </button>
+              <img src="img/durbun.jpg" alt="Dürbün" class="category-card-img">
+              
+            </div>
+          </article>
+
+          <article class="category-card">
+            <div class="category-card-inner">
+              <h3 class="category-title"><span class="highlight">Aksesuar</span> & Tüp</h3>
+              <div class="category-tags">
+                <span class="category-tag">Tüp, kılıf, çanta, temizlik ürünleri</span>
+              </div>
+              <button type="button" class="category-btn">
+                İletişime geçin. <span class="icon">ℹ</span>
+              </button>
+              
+              <img src="img/tup.jpg" alt="Tüp ve Aksesuarlar" class="category-card-img">
+              
+            </div>
+          </article>
+        </div>
+
+        
+      
+      <!-- İLETİŞİM ANCHOR (footer üstü) -->
+      <section id="iletisim" style="margin-top:3rem; font-size:.85rem; color:var(--text-muted);">
+        <p><strong>İletişim:</strong> Detaylı adres ve telefon bilgileri sayfa altındaki bölümde yer almaktadır.</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER buraya yüklenecek -->
+  <div id="footer-container"></div>
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>

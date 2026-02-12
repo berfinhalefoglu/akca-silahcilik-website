@@ -1,0 +1,192 @@
+/* =========================================
+   ÜYELİK SAYFASI ÖZEL TASARIMI (Responsive)
+   ========================================= */
+
+/* Sayfa Arka Planı ve Hizalama */
+.login-page-container {
+  min-height: calc(100vh - 160px); /* Header ve Footer payını düş */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-color: #f4f5f2; /* Göz yormayan kirli beyaz zemin */
+}
+
+/* Ana Kart (Ortadaki Kutu) */
+.login-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* --- SOL TARAF (YEŞİL ALAN) --- */
+.login-info-side {
+  flex: 1;
+  background: linear-gradient(135deg, #2E4634 0%, #4E894C 100%); /* Cossack Green tonları */
+  padding: 3rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+/* Arka plana hafif desen (Opsiyonel) */
+.login-info-side::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+}
+
+.brand-badge {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.login-info-side h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.main-desc {
+  
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Sarı Uyarı Kutusu */
+.info-alert-box {
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 4px solid #F1C40F; /* Altın Sarısı */
+  padding: 1.2rem;
+  border-radius: 0 8px 8px 0;
+  backdrop-filter: blur(4px);
+}
+
+.info-alert-box h4 {
+  color: #F1C40F;
+  margin-bottom: 0.5rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+.info-alert-box p {
+  
+  opacity: 0.9;
+}
+
+.contact-area {
+  margin-top: auto;
+  padding-top: 2rem;
+  
+  opacity: 0.8;
+}
+
+.contact-link {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-left: 5px;
+}
+
+/* --- SAĞ TARAF (FORM ALANI) --- */
+.login-form-side {
+  flex: 1;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+}
+
+.form-header h3 {
+  font-family: 'Oswald', sans-serif;
+  
+  color: #2E4634;
+  margin-bottom: 0.5rem;
+}
+
+.form-header p {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s;
+  background: #fdfdfd;
+}
+
+.form-group input:focus {
+  border-color: #4E894C; /* Odaklanınca Yeşil Ol */
+  outline: none;
+  background: #fff;
+}
+
+/* Giriş Butonu */
+.login-btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: #2E4634;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  margin-top: 1rem;
+}
+
+.login-btn:hover {
+  background-color: #4E894C;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(78, 137, 76, 0.3);
+}
+
+/* --- MOBİL UYUMLULUK (Cep Telefonu İçin) --- */
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column; /* Mobilde alt alta geçsin */
+  }
+  
+  .login-info-side {
+    padding: 2rem;
+  }
+  
+  .login-form-side {
+    padding: 2rem;
+  }
+}

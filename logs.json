@@ -1,0 +1,32 @@
+[
+  {
+    "username": "admin",
+    "role": "admin",
+    "date": "16.12.2025 13:24:55",
+    "ip": "::1"
+  },
+  {
+    "username": "admin",
+    "role": "admin",
+    "date": "16.12.2025 13:22:22",
+    "ip": "::1"
+  },
+  {
+    "username": "admin",
+    "role": "admin",
+    "date": "15.12.2025 12:05:31",
+    "ip": "::1"
+  },
+  {
+    "username": "admin",
+    "role": "admin",
+    "date": "15.12.2025 01:28:14",
+    "ip": "::1"
+  },
+  {
+    "username": "admin",
+    "role": "admin",
+    "date": "15.12.2025 01:26:13",
+    "ip": "::1"
+  }
+]

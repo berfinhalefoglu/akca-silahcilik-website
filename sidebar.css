@@ -1,0 +1,122 @@
+
+/* --- SOL SABİT MENÜ --- */
+/* Sidebar görsel iyileştirme */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #ffffff, #f3f7ef);
+  border-radius: 18px;
+  padding: 1.2rem 1.2rem 1rem;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 18px 30px rgba(0,0,0,0.18);
+  height: calc(100vh - 110px);
+  position: sticky;
+  top: 90px;
+  overflow-y: auto;
+}
+
+.sidebar-title {
+  font-size: 1.05rem;
+  margin-bottom: .8rem;
+  color: var(--green-main);
+  font-weight: 700;
+}
+
+.sidebar-menu {
+  list-style: none;
+}
+
+/* Üst kategori butonları */
+.sidebar-main {
+  width: 100%;
+  text-align: left;
+  background: rgba(245, 250, 240, 0.9);
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.03);
+  padding: .45rem .8rem;
+  margin-top: .35rem;
+  font-size: 0.94rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--green-deep);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.sidebar-main:hover {
+  background: #e7f1dd;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+}
+
+/* Küçük ok işareti (JS ile class ekleyeceğiz) */
+.sidebar-main::after {
+  content: "▾";
+  font-size: .75rem;
+  color: var(--text-muted);
+  transition: transform 0.18s ease;
+}
+
+.sidebar-main-open::after {
+  transform: rotate(180deg);
+}
+
+/* Alt linkler */
+.sidebar-sub {
+  display: none;
+  padding-left: .75rem;
+  margin: .35rem 0 .6rem;
+  border-left: 2px solid rgba(127,162,107,0.25);
+}
+
+.sidebar-sub li a {
+  display: block;
+  padding: .22rem 0;
+  font-size: .86rem;
+  color: var(--text-muted);
+  position: relative;
+}
+
+/* Küçük yuvarlak bullet */
+.sidebar-sub li a::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(127,162,107,0.7);
+  position: absolute;
+  left: -11px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sidebar-sub li a:hover {
+  color: var(--green-main);
+}
+
+/* Açık olan alt menü */
+.sidebar-sub-open {
+  display: block !important;
+}
+
+/* Mobilde sidebar üstte tam genişlik */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+}
+
+/* Mobil görünüm */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+}
+
+
+ 

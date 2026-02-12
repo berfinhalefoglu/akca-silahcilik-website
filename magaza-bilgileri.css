@@ -1,0 +1,261 @@
+/* =========================================
+   MAĞAZA BİLGİLERİ - YENİ TASARIM
+   ========================================= */
+
+/* Renk Değişkenleri (Ana temadan alındı) */
+:root {
+    --cossack-green: #2E4634;
+    --cossack-light: #4E894C;
+    --dark-bg: #1a1a1a;
+    --light-bg: #f4f6f8;
+    --text-dark: #2c3e50;
+    --text-muted: #666;
+    --border-color: #e1e4e8;
+}
+
+/* Genel Sayfa Yapısı */
+body {
+    background-color: var(--light-bg);
+}
+
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* --- 1. HERO BAŞLIK ALANI --- */
+.page-hero {
+    background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(46, 70, 52, 0.8)), url('../img/store-bg.jpg'); /* Arka plana bir mağaza fotosu koyabilirsiniz */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 4px solid var(--cossack-green);
+}
+
+.hero-content h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- 2. İLETİŞİM ve HARİTA WRAPPER --- */
+.contact-wrapper {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-family: 'Oswald', sans-serif;
+    color: var(--cossack-green);
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* SOL: İLETİŞİM KARTLARI GRID */
+.contact-info-side {
+    flex: 1;
+}
+
+.info-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive Grid */
+    gap: 20px;
+}
+
+.info-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(46, 70, 52, 0.1);
+    border-color: var(--cossack-light);
+}
+
+.icon-box {
+    background-color: rgba(78, 137, 76, 0.1); /* Açık Yeşil Zemin */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-box svg {
+    stroke: var(--cossack-green);
+}
+
+.card-details h4 {
+    font-family: 'Oswald', sans-serif;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.card-details p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.info-card.working-hours p {
+    margin-bottom: 4px;
+}
+
+.closed {
+    color: #c0392b; /* Kırmızı */
+    font-weight: 500;
+}
+
+.phone-link, .email-link {
+    color: var(--cossack-green);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.phone-link:hover, .email-link:hover {
+    color: var(--cossack-light);
+    text-decoration: underline;
+}
+
+/* SAĞ: HARİTA ÇERÇEVESİ */
+.map-side {
+    flex: 1.2; /* Harita biraz daha geniş olsun */
+}
+
+.map-frame {
+    height: 450px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 5px solid #fff; /* Beyaz çerçeve efekti */
+}
+
+/* --- 3. HAKKIMIZDA BÖLÜMÜ (STYLED) --- */
+.about-section-styled {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Arka plana dekoratif bir öğe (Opsiyonel) */
+.about-section-styled::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(78, 137, 76, 0.05));
+    pointer-events: none;
+}
+
+.icon-title svg {
+    stroke: var(--cossack-green);
+}
+
+.about-text {
+    max-width: 900px;
+}
+
+.lead-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--cossack-green);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.about-text p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+/* --- SOSYAL MEDYA BUTONLARI --- */
+.social-buttons-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: transform 0.2s, opacity 0.2s;
+    color: #fff !important; /* Yazılar hep beyaz */
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+    text-decoration: none;
+}
+
+/* Marka Renkleri */
+.social-btn.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 4px 10px rgba(188, 24, 136, 0.2);
+}
+
+.social-btn.facebook {
+    background-color: #1877F2;
+    box-shadow: 0 4px 10px rgba(24, 119, 242, 0.2);
+}
+/* --- MOBİL UYUMLULUK --- */
+@media (max-width: 900px) {
+    .contact-wrapper {
+        flex-direction: column; /* Alt alta geç */
+    }
+
+    .map-side {
+        flex: auto;
+    }
+    
+    .map-frame {
+        height: 350px; /* Mobilde haritayı biraz kısalt */
+    }
+
+    .page-hero {
+        padding: 40px 20px;
+    }
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+}

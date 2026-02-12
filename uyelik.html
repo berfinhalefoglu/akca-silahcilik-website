@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Akça Silahçılık | Özel Müşteri Girişi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/pages/uyelik.css">
+  
+  <style>
+    .error-box {
+        background-color: #fee2e2; /* Açık Kırmızı Zemin */
+        color: #991b1b;           /* Koyu Kırmızı Yazı */
+        border: 1px solid #f87171;
+        padding: 12px;
+        border-radius: 8px;
+        margin-top: 15px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-align: center;
+        display: none; /* Başlangıçta gizli olsun */
+        animation: shake 0.3s ease-in-out; /* Hata olunca titresin */
+    }
+
+    /* Titreme Animasyonu */
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        50% { transform: translateX(5px); }
+        75% { transform: translateX(-5px); }
+        100% { transform: translateX(0); }
+    }
+  </style>
+
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <main class="login-page-container">
+    <div class="login-wrapper">
+      
+      <div class="login-info-side">
+        <div class="brand-badge">AKÇA SİLAHÇILIK</div>
+        <h2>Özel Müşteri Paneli</h2>
+        <p class="main-desc">
+          Güvenlik politikalarımız gereği sitemiz <strong>kapalı devre</strong> çalışmaktadır.
+        </p>
+        
+        <div class="info-alert-box">
+          <h4>⚠️ Nasıl Üye Olurum?</h4>
+          <p>
+            Online kayıt kapalıdır. Giriş bilgileriniz, mağazamızdan alışveriş yaptığınızda yetkili personelimiz tarafından size teslim edilir.
+          </p>
+        </div>
+      </div>
+
+      <div class="login-form-side">
+        <div class="form-header">
+          <h3>Giriş Yap</h3>
+          <p>Bayiden aldığınız bilgilerle oturum açın.</p>
+        </div>
+        
+        <form id="login-form" autocomplete="off">
+          <div class="form-group">
+            <label>Kullanıcı Adı</label>
+            <input type="text" id="login-username" placeholder="Örn: akca-demo" required>
+          </div>
+
+          <div class="form-group">
+            <label>Şifre</label>
+            <input type="password" id="login-password" placeholder="••••••" required>
+          </div>
+
+          <button type="submit" class="login-btn">GÜVENLİ GİRİŞ YAP</button>
+          
+          <div id="login-error-msg" class="error-box"></div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    // Header ve Footer'ı Yükle
+    fetch("partials/header.html").then(r => r.text()).then(h => document.getElementById("header-container").innerHTML = h);
+    fetch("partials/footer.html").then(r => r.text()).then(h => document.getElementById("footer-container").innerHTML = h);
+
+    // GİRİŞ İŞLEMİ VE HATA KONTROLÜ
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+        e.preventDefault(); // Sayfa yenilenmesin
+
+        const username = document.getElementById('login-username').value;
+        const password = document.getElementById('login-password').value;
+        const errorBox = document.getElementById('login-error-msg');
+        const btn = document.querySelector('.login-btn');
+
+        // Önceki hatayı temizle ve butonu kilitle
+        errorBox.style.display = 'none';
+        btn.innerText = "Kontrol Ediliyor...";
+        btn.style.opacity = "0.7";
+        btn.disabled = true;
+
+        try {
+            // Sunucuya sor
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+
+            // KONTROL ANI
+            if (data.success) {
+                // Şifre Doğru -> Yönlendir
+                btn.innerText = "Giriş Başarılı! Yönlendiriliyorsunuz...";
+                btn.style.backgroundColor = "#27ae60"; // Yeşil yap
+                setTimeout(() => {
+                    window.location.href = data.redirectUrl;
+                }, 1000);
+            } else {
+                // Şifre Yanlış -> Hata Göster
+                errorBox.innerText = "⛔ " + data.message; // "Kullanıcı adı veya şifre hatalı!" yazar
+                errorBox.style.display = 'block';
+                
+                // Butonu eski haline getir
+                btn.innerText = "GÜVENLİ GİRİŞ YAP";
+                btn.style.opacity = "1";
+                btn.disabled = false;
+            }
+
+        } catch (err) {
+            console.error(err);
+            errorBox.innerText = "⚠️ Sunucu hatası! Lütfen 'npm start' yaptığınızdan emin olun.";
+            errorBox.style.display = 'block';
+            btn.innerText = "GÜVENLİ GİRİŞ YAP";
+            btn.disabled = false;
+        }
+    });
+  </script>
+
+</body>
+</html>
